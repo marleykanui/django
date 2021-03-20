@@ -7,5 +7,15 @@ def index(request):
     context = {'latest_question_list': latest_question_list}
     return render(request, 'votes/index.html', context)
 
+# Show specific question and choices
+def detail(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+    except Question.DoesNotExist:
+        raise Http404("Question does not exist")
+    return render(request, 'votes/results.html', {'question': question})
 
-
+# Get question and display results
+def results(request, question_id):
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'votes/results.html', {'question': question})

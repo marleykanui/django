@@ -4,7 +4,6 @@
 <div class="card mb-3">
   <div class="card-body">
     <p class="lead">{{ question.question_text }}</p>
-    {% comment %}
     <a
       href="{% url 'votes:detail' question.id %}"
       class="btn btn-primary btn-sm"
@@ -15,7 +14,6 @@
       class="btn btn-secondary btn-sm"
       >Results</a
     >
-    {% endcomment %}
   </div>
 </div>
 {% endfor %} {% else %}
